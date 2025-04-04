@@ -187,6 +187,62 @@ export default function AMDCPUDataBase({ generation, performance, threeDVCache }
                 cpuOptionD: null,
                 cpuOptionE: null
             })
+        } else if (generation === 2 && performance === 0 && threeDVCache === 1){
+            setCpuOptions({
+                cpuOptionA: "none",
+                cpuOptionB: null,
+                cpuOptionC: null,
+                cpuOptionD: null,
+                cpuOptionE: null
+            })
+        } else if (generation === 2 && performance === 0 && threeDVCache === 0){
+            setCpuOptions({
+                cpuOptionA: cpu24,
+                cpuOptionB: cpu25,
+                cpuOptionC: cpu26,
+                cpuOptionD: null,
+                cpuOptionE: null
+            })
+        } else if (generation === 2 && performance === 1 && threeDVCache === 1){
+            setCpuOptions({
+                cpuOptionA: cpu27,
+                cpuOptionB: null,
+                cpuOptionC: null,
+                cpuOptionD: null,
+                cpuOptionE: null
+            })
+        } else if (generation === 2 && performance === 1 && threeDVCache === 0){
+            setCpuOptions({
+                cpuOptionA: cpu28,
+                cpuOptionB: cpu29,
+                cpuOptionC: cpu30,
+                cpuOptionD: null,
+                cpuOptionE: null
+            })
+        } else if (generation === 2 && performance === 2 && threeDVCache === 1){
+            setCpuOptions({
+                cpuOptionA: cpu31,
+                cpuOptionB: null,
+                cpuOptionC: null,
+                cpuOptionD: null,
+                cpuOptionE: null
+            })
+        } else if (generation === 2 && performance === 2 && threeDVCache === 0){
+            setCpuOptions({
+                cpuOptionA: cpu32,
+                cpuOptionB: cpu33,
+                cpuOptionC: cpu34,
+                cpuOptionD: null,
+                cpuOptionE: null
+            })
+        } else if (generation === 2 && performance === 3){
+            setCpuOptions({
+                cpuOptionA: "none",
+                cpuOptionB: null,
+                cpuOptionC: null,
+                cpuOptionD: null,
+                cpuOptionE: null
+            })
         }
 
 
