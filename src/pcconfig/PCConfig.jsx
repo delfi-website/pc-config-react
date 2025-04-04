@@ -190,7 +190,6 @@ export default function PCConfig() {
 
 
                 <p></p>
-                <input type="submit" value="Submit Configuration"/>
             </form>
             {cpuIsIntel &&(
                 <IntelCPUDataBase generation={intelCpuGeneration} performance={cpuPerformanceBracket} iGpu={iGpu}/>

@@ -54,9 +54,6 @@ export default function AMDCPUDataBase({ generation, performance, threeDVCache }
         const cpu33 = "Ryzen 5 5600X"
         const cpu34 = "Ryzen 5 5600"
 
-
-
-
         //Older AMD
         if (generation === 3) {
             setCpuOptions({
@@ -70,6 +67,128 @@ export default function AMDCPUDataBase({ generation, performance, threeDVCache }
 
         // The HELL of if statements
 
+        if (generation === 0 && performance === 0 && threeDVCache === 1) {
+            setCpuOptions({
+                cpuOptionA:cpu01,
+                cpuOptionB:cpu03,
+                cpuOptionC:null,
+                cpuOptionD:null,
+                cpuOptionE:null
+            })
+        } else if (generation === 0 && performance === 0 && threeDVCache === 0){
+            setCpuOptions({
+                cpuOptionA: cpu02,
+                cpuOptionB: cpu04,
+                cpuOptionC: null,
+                cpuOptionD: null,
+                cpuOptionE: null
+            })
+        } else if (generation === 0 && performance === 1 && threeDVCache === 1){
+            setCpuOptions({
+                cpuOptionA: cpu05,
+                cpuOptionB: null,
+                cpuOptionC: null,
+                cpuOptionD: null,
+                cpuOptionE: null
+            }) }
+          else if (generation === 0 && performance === 1 && threeDVCache === 0){
+            setCpuOptions({
+                cpuOptionA: cpu06,
+                cpuOptionB: null,
+                cpuOptionC: null,
+                cpuOptionD: null,
+                cpuOptionE: null
+            })
+        } else if (generation === 0 && performance === 2 && threeDVCache === 0){
+                setCpuOptions({
+                    cpuOptionA: cpu07,
+                    cpuOptionB: cpu08,
+                    cpuOptionC: null,
+                    cpuOptionD: null,
+                    cpuOptionE: null
+                })
+          } else if (generation === 0 && performance === 2 && threeDVCache === 1){
+            setCpuOptions({
+                cpuOptionA: "none",
+                cpuOptionB: null,
+                cpuOptionC: null,
+                cpuOptionD: null,
+                cpuOptionE: null
+            })
+        } else if (generation === 0 && performance === 3) {
+            setCpuOptions({
+                cpuOptionA: "none",
+                cpuOptionB: null,
+                cpuOptionC: null,
+                cpuOptionD: null,
+                cpuOptionE: null
+            })
+        } else if (generation === 1 && performance === 0 && threeDVCache === 1){
+            setCpuOptions({
+                cpuOptionA: cpu09,
+                cpuOptionB: cpu11,
+                cpuOptionC: null,
+                cpuOptionD: null,
+                cpuOptionE: null
+            })
+        } else if (generation === 1 && performance === 0 && threeDVCache === 0){
+            setCpuOptions({
+                cpuOptionA: cpu10,
+                cpuOptionB: cpu12,
+                cpuOptionC: cpu13,
+                cpuOptionD: null,
+                cpuOptionE: null
+            })
+        } else if (generation === 1 && performance === 1 && threeDVCache === 1){
+        setCpuOptions({
+            cpuOptionA: cpu14,
+            cpuOptionB: null,
+            cpuOptionC: null,
+            cpuOptionD: null,
+            cpuOptionE: null
+        })
+    } else if (generation === 1 && performance === 1 && threeDVCache === 0){
+            setCpuOptions({
+                cpuOptionA: cpu15,
+                cpuOptionB: cpu16,
+                cpuOptionC: cpu20,
+                cpuOptionD: null,
+                cpuOptionE: null
+            })
+        } else if (generation === 1 && performance === 2 && threeDVCache === 0){
+            setCpuOptions({
+                cpuOptionA: cpu17,
+                cpuOptionB: cpu18,
+                cpuOptionC: cpu19,
+                cpuOptionD: cpu21,
+                cpuOptionE: cpu22
+            })
+        } else if (generation === 1 && performance === 2 && threeDVCache === 1){
+            setCpuOptions({
+                cpuOptionA: "none",
+                cpuOptionB: null,
+                cpuOptionC: null,
+                cpuOptionD: null,
+                cpuOptionE: null
+            })
+        } else if (generation === 1 && performance === 3 && threeDVCache === 0){
+            setCpuOptions({
+                cpuOptionA: cpu23,
+                cpuOptionB: null,
+                cpuOptionC: null,
+                cpuOptionD: null,
+                cpuOptionE: null
+            })
+        } else if (generation === 1 && performance === 3 && threeDVCache === 1){
+            setCpuOptions({
+                cpuOptionA: "none",
+                cpuOptionB: null,
+                cpuOptionC: null,
+                cpuOptionD: null,
+                cpuOptionE: null
+            })
+        }
+
 
     }, [generation, performance, threeDVCache]);
 
@@ -78,7 +197,7 @@ export default function AMDCPUDataBase({ generation, performance, threeDVCache }
     return (
         <div>
             <p>Fitting CPUs are:</p>
-            <p>{cpuOptions.cpuOptionA} {cpuOptions.cpuOptionB} {cpuOptions.cpuOptionC}</p>
+            <p>{cpuOptions.cpuOptionA} {cpuOptions.cpuOptionB} {cpuOptions.cpuOptionC} {cpuOptions.cpuOptionD} {cpuOptions.cpuOptionE}</p>
         </div>
     );
 }
