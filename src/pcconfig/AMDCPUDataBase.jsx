@@ -68,6 +68,7 @@ export default function AMDCPUDataBase({ generation, performance, threeDVCache }
 
         // The HELL of if statements
 
+        //Ryzen 9000
         if (generation === 0 && performance === 0 && threeDVCache === 1) {
             setCpuOptions({
                 cpuOptionA:cpu01,
@@ -124,6 +125,7 @@ export default function AMDCPUDataBase({ generation, performance, threeDVCache }
                 cpuOptionD: null,
                 cpuOptionE: null
             })
+            //Ryzen 7000/8000
         } else if (generation === 1 && performance === 0 && threeDVCache === 1){
             setCpuOptions({
                 cpuOptionA: cpu09,
@@ -188,6 +190,7 @@ export default function AMDCPUDataBase({ generation, performance, threeDVCache }
                 cpuOptionD: null,
                 cpuOptionE: null
             })
+            //Ryzen 5000
         } else if (generation === 2 && performance === 0 && threeDVCache === 1){
             setCpuOptions({
                 cpuOptionA: "none",
