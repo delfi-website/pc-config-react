@@ -22,10 +22,10 @@ export default function PCConfig() {
     // GPU Vendor and Generation
 
     const [gpuVendor, setGpuVendor] = useState(0); // 0 = Nvidia, 1 = AMD, 2 = Intel
-    const [nvidiaGpuGeneration, setNvidiaGpuGeneration] = useState(0); // 0 = RTX 5000, 1 = RTX 4000, 2 = RTX 3000, 3 = RTX 2000/GTX 1600, 4 = GTX 1000, 5 = older
+    const [nvidiaGpuGeneration, setNvidiaGpuGeneration] = useState(0); // 0 = RTX 5000, 1 = RTX 4000, 2 = RTX 3000, 3 = RTX 2000, 4 = GTX 1600, 5 = GTX 1000, 6 = older
     const [amdGpuGeneration, setAmdGpuGeneration] = useState(0); // 0 = RX 9000, 1 = RX 7000, 2 = RX 6000, 3 = RX 5000, 4 = RX Vega, 5 = RX 500, 6 = older
     const [intelGpuGeneration, setIntelGpuGeneration] = useState(0); // 0 = Arc Battlemage, 1 = Arc Alchemist
-    const [gpuPerformanceBracket, setGpuPerformanceBracket] = useState(0); // 0 = 90 Class, 1 = 80 Class, 2 = 70 Class, 3 = 60 CLass, 4= 50 Class, 5 = worseconst [cpuIsAmd, setCpuIsAmd] = useState(false);
+    const [gpuPerformanceBracket, setGpuPerformanceBracket] = useState(0); // 0 = 90 Class, 1 = 80 Class, 2 = 70 Class, 3 = 60 CLass, 4= 50 Class, 5 = worse than 50 class;
     const [gpuGenerationName, setGpuGenerationName] = useState("NVIDIA GeForce ")
 
     const [gpuIsNvidia, setGpuIsNvidia] = useState(true);
@@ -320,15 +320,16 @@ export default function PCConfig() {
                 <option value="0">RTX 5000 Series</option>
                 <option value="1">RTX 4000 Series</option>
                 <option value="2">RTX 3000 Series</option>
-                <option value="3">RTX 2000 / GTX 1600 Series</option>
-                <option value="4">GTX 1000 Series</option>
-                <option value="5">Older GeForce Series</option>
+                <option value="3">RTX 2000 Series</option>
+                <option value="4">GTX 1600 Series</option>
+                <option value="5">GTX 1000 Series</option>
+                <option value="6">Older GeForce Series</option>
                 </select>
             )}
             <p>
             </p>
             <p>Select your GPU Performance Tier</p>
-            <p>Note: This is going of NVIDIA's Numbering. So a Arc B580 is in the same Class as the RTX 4060</p>
+            <p>Note: This is going of NVIDIA's Numbering. An Arc B580 is in the same Class as the RTX 4060</p>
             <select
                 name="gpuPerformanceBraket"
                 value={gpuPerformanceBracket}
@@ -348,7 +349,7 @@ export default function PCConfig() {
             {gpuIsIntel && (
                 <IntelGPUDataBase gpuGeneration={intelGpuGeneration} performanceBraket={gpuPerformanceBracket}/>
             )}
-            {gpuIsNvidia && (
+            {gpuIsAmd && (
                 <AMDGPUDataBase gpuGeneration={amdGpuGeneration} performanceBraket={gpuPerformanceBracket}/>
             )}
         </div>
