@@ -350,6 +350,13 @@ export default function NvidiaGPUDataBase({gpuGeneration, performanceBraket}) {
                     gpuOptionD: null
                 }
             )
+        } else {
+            setGpuOptins({
+                gpuOptionA: "| Used GTX 900 / 700 Series cards",
+                gpuOptionB: null,
+                gpuOptionC: null,
+                gpuOptionD: null
+            })
         }
     }, [gpuGeneration, performanceBraket]);
 
