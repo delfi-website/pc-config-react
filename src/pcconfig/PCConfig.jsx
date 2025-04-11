@@ -23,7 +23,7 @@ export default function PCConfig() {
 
     const [gpuVendor, setGpuVendor] = useState(0); // 0 = Nvidia, 1 = AMD, 2 = Intel
     const [nvidiaGpuGeneration, setNvidiaGpuGeneration] = useState(0); // 0 = RTX 5000, 1 = RTX 4000, 2 = RTX 3000, 3 = RTX 2000/GTX 1600, 4 = GTX 1000, 5 = older
-    const [amdGpuGeneration, setAmdGpuGeneration] = useState(0); // 0 = RX 9000, 1 = RX 7000, 2 = RX 6000, 3 = RX 5000, 4 = RX 500, 5 = older
+    const [amdGpuGeneration, setAmdGpuGeneration] = useState(0); // 0 = RX 9000, 1 = RX 7000, 2 = RX 6000, 3 = RX 5000, 4 = RX Vega, 5 = RX 500, 6 = older
     const [intelGpuGeneration, setIntelGpuGeneration] = useState(0); // 0 = Arc Battlemage, 1 = Arc Alchemist
     const [gpuPerformanceBracket, setGpuPerformanceBracket] = useState(0); // 0 = 90 Class, 1 = 80 Class, 2 = 70 Class, 3 = 60 CLass, 4= 50 Class, 5 = worseconst [cpuIsAmd, setCpuIsAmd] = useState(false);
     const [gpuGenerationName, setGpuGenerationName] = useState("NVIDIA GeForce ")
@@ -310,8 +310,9 @@ export default function PCConfig() {
                     <option value="1">Radeon Rx 7000 Series</option>
                     <option value="2">Radeon Rx 6000 Series</option>
                     <option value="3">Radeon Rx 5000 Series</option>
-                    <option value="4">Radeon Rx 500 Series</option>
-                    <option value="5">Older Radeon Series</option>
+                    <option value="4">Radeon Rx Vega Series</option>
+                    <option value="5">Radeon Rx 500 Series</option>
+                    <option value="6">Older Radeon Series</option>
                 </select>
             )}
             {gpuIsNvidia && (
