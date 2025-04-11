@@ -1,3 +1,3 @@
-export default function NvidiaGPUDataBase({gpuGeneration, performanceBraket,callback}) {
+export default function NvidiaGPUDataBase({gpuGeneration, performanceBraket}) {
 
 }

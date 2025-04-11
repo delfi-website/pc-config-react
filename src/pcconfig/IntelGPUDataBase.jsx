@@ -1,3 +1,3 @@
-export default function IntelGPUDataBase({gpuGeneration, performanceBraket,callback}) {
+export default function IntelGPUDataBase({gpuGeneration, performanceBraket}) {
 
 }
