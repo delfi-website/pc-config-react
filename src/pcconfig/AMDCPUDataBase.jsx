@@ -49,6 +49,7 @@ export default function AMDCPUDataBase({ generation, performance, threeDVCache }
         const cpu28 = "Ryzen 7 5800XT"
         const cpu29 = "Ryzen 7 5800X"
         const cpu30 = "Ryzen 7 5700X"
+        const cpu35 = "Ryzen 7 5700X3D"
         const cpu31 = "Ryzen 5 5600X3D"
         const cpu32 = "Ryzen 5 5600XT"
         const cpu33 = "Ryzen 5 5600X"
@@ -206,7 +207,7 @@ export default function AMDCPUDataBase({ generation, performance, threeDVCache }
         } else if (generation === 2 && performance === 1 && threeDVCache === 1){
             setCpuOptions({
                 cpuOptionA: cpu27,
-                cpuOptionB: null,
+                cpuOptionB: cpu35,
                 cpuOptionC: null,
                 cpuOptionD: null,
                 cpuOptionE: null
@@ -254,6 +255,9 @@ export default function AMDCPUDataBase({ generation, performance, threeDVCache }
         <div>
             <p>Fitting CPUs are:</p>
             <p>{cpuOptions.cpuOptionA} {cpuOptions.cpuOptionB} {cpuOptions.cpuOptionC} {cpuOptions.cpuOptionD} {cpuOptions.cpuOptionE}</p>
+            <p>Note: Some Ryzen 5000 and older CPU's dont contain integrated Graphics. Please check the Manufactures Website.</p>
+            <p>Note: The Ryzen 5 7500F does not contain integrated Graphics.</p>
+            <p>Note: With the Expetion of Ryzen 7000 and Ryzen 5000 3D VCache CPU's,  all AMD Ryzen CPU's are overclockable in an X or B Series Motherboard.</p>
         </div>
     );
 }
