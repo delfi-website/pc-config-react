@@ -5,12 +5,13 @@ import AMDCPUDataBase from "./AMDCPUDataBase.jsx";
 export default function PCConfig() {
     // CPU Vendor and Generation
     const [cpuVendor, setCpuVendor] = useState(0);  // 0 = Intel, 1 = AMD
-    const [intelCpuGeneration, setIntelCpuGeneration] = useState(0); // 0 = Core Ultra 200 / Arrow Lake
-    const [amdCpuGeneration, setAmdCpuGeneration] = useState(0); // 0 = Ryzen 9000 / Zen 5
-    const [cpuPerformanceBracket, setCpuPerformanceBracket] = useState(0); // 0 = Core Ultra / Ryzen 9
+    const [intelCpuGeneration, setIntelCpuGeneration] = useState(0); // 0 = Core Ultra 200 / Arrow Lake, 1 = Core i 14th Gen. / Raptor Lake Refresh, 2 = Core i 13th Gen / Raptor Lake, 3 = Core i 12th Gen / Alder Lake, 4 = older
+    const [amdCpuGeneration, setAmdCpuGeneration] = useState(0); // 0 = Ryzen 9000 / Zen 5, 1 = Ryzen 7000 / 8000, 2= Ryzen 5000, 3 = older
+    const [cpuPerformanceBracket, setCpuPerformanceBracket] = useState(0); // 0 = Core Ultra / Ryzen 9, 1 = Core Ultra / Ryzen 7, 2 = Core Ultra / Ryzen 5, 3 = Core Ultra / Ryzen 3
     const [threeDVCache, setThreeDVcache] = useState(0); // true = eg. Ryzen 7 9800X3D
     const [iGpu, setIGpu] = useState(0); // true = Integrated Graphics, false = No Integrated Graphics
     const [cpuGenerationName, setCpuGenerationName] = useState("Intel Core Ultra ")
+    const [overclockable, setOverclockable] = useState(0)
 
     const [cpuIsAmd, setCpuIsAmd] = useState(false);
     const [cpuIsIntel, setCpuIsIntel] = useState(true);
@@ -18,10 +19,10 @@ export default function PCConfig() {
     // GPU Vendor and Generation
     /*
     const [gpuVendor, setGpuVendor] = useState(0); // 0 = Nvidia, 1 = AMD, 2 = Intel
-    const [nvidiaGpuGeneration, setNvidiaGpuGeneration] = useState(0); // 0 = RTX 5000
-    const [amdGpuGeneration, setAmdGpuGeneration] = useState(0); // 0 = RX 9000
-    const [intelGpuGeneration, setIntelGpuGeneration] = useState(0); // 0 = Arc Battlemage
-    const [gpuPerformanceBracket, setGpuPerformanceBracket] = useState(0); // 0 = 90 Class
+    const [nvidiaGpuGeneration, setNvidiaGpuGeneration] = useState(0); // 0 = RTX 5000, 1 = RTX 4000, 2 = RTX 3000, 3 = RTX 2000/GTX 1600, 4 = GTX 1000, 5 = older
+    const [amdGpuGeneration, setAmdGpuGeneration] = useState(0); // 0 = RX 9000, 1 = RX 7000, 2 = RX 6000, 3 = RX 5000, 4 = RX 500, 5 = older
+    const [intelGpuGeneration, setIntelGpuGeneration] = useState(0); // 0 = Arc Battlemage, 1 = Arc Alchemist
+    const [gpuPerformanceBracket, setGpuPerformanceBracket] = useState(0); // 0 = 90 Class, 1 = 80 Class, 2 = 70 Class, 3 = 60 CLass, 4= 50 Class, 5 = worse
     */
     const handleCpuVendorChange = (event) => {
         const vendor = parseInt(event.target.value);
@@ -52,16 +53,21 @@ export default function PCConfig() {
         if (generation === 0) {
             setCpuGenerationName("Intel Core Ultra ");
         } else if (generation === 1) {
-            setCpuGenerationName("Intel Core 14th Gen ");
+            setCpuGenerationName("Intel Core 14th Gen i");
         } else if (generation === 2) {
-            setCpuGenerationName("Intel Core 13th Gen ");
-        } else {
+            setCpuGenerationName("Intel Core 13th Gen i");
+        } else if (generation === 3) {
+            setCpuGenerationName("Intel Core 12th Gen i");
+        }else {
             setCpuGenerationName("Older Intel Core i");
         }
     };
 
     const handleIGpuChange = (event) => {
         setIGpu(parseInt(event.target.value, 10));
+    };
+    const handleOverclockableChange = (event) => {
+        setOverclockable(parseInt(event.target.value, 10));
     };
     const handleThreeDVCacheChange = (event) => {
         setThreeDVcache(parseInt(event.target.value, 10));
@@ -83,6 +89,7 @@ export default function PCConfig() {
         <div>
             <form onSubmit={handleSubmit}>
                 <h1>PC Configurator</h1>
+                <h2>CPU Selection</h2>
                 <p>Select your Processor Brand</p>
                 <label>
                     <input
@@ -163,6 +170,25 @@ export default function PCConfig() {
                                 onChange={handleIGpuChange}
                             />Without Integrated Graphics
                         </label>
+                        <p></p>
+                        <label>
+                            <input
+                                type="radio"
+                                name="overclock"
+                                checked={overclockable === 1}
+                                value="1"
+                                onChange={handleOverclockableChange}
+                            />Overclockable
+                        </label>
+                        <label>
+                            <input
+                                type="radio"
+                                name="overclock"
+                                checked={overclockable === 0}
+                                value="0"
+                                onChange={handleOverclockableChange}
+                            />Non-Overclockable
+                        </label>
                     </>
                 )}
                 {cpuIsAmd && (
@@ -192,7 +218,7 @@ export default function PCConfig() {
                 <p></p>
             </form>
             {cpuIsIntel &&(
-                <IntelCPUDataBase generation={intelCpuGeneration} performance={cpuPerformanceBracket} iGpu={iGpu}/>
+                <IntelCPUDataBase generation={intelCpuGeneration} performance={cpuPerformanceBracket} iGpu={iGpu} unlocked={overclockable}/>
             )}
             {cpuIsAmd && (
                 <AMDCPUDataBase generation={amdCpuGeneration} performance={cpuPerformanceBracket} threeDVCache={threeDVCache}/>
