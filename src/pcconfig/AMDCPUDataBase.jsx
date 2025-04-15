@@ -10,6 +10,7 @@ export default function AMDCPUDataBase({ generation, performance, threeDVCache, 
         cpuOptionE: null
     });
 
+
     useEffect(() => {
         //CPU List
 

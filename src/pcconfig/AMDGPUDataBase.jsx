@@ -7,6 +7,7 @@ export default function AMDGPUDataBase({gpuGeneration, performanceBraket, darkMo
         gpuOptionC: null,
         gpuOptionD: null
     })
+
     useEffect(()=>{
         //GPU LIST
 
