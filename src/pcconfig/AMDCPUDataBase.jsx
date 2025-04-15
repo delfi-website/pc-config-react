@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import "../App.css"
 
-export default function AMDCPUDataBase({ generation, performance, threeDVCache }) {
+export default function AMDCPUDataBase({ generation, performance, threeDVCache, darkMode }) {
     const [cpuOptions, setCpuOptions] = useState({
         cpuOptionA: null,
         cpuOptionB: null,
@@ -259,9 +259,9 @@ export default function AMDCPUDataBase({ generation, performance, threeDVCache }
         <div>
             <p>Fitting CPUs are:</p>
             <p>{cpuOptions.cpuOptionA} {cpuOptions.cpuOptionB} {cpuOptions.cpuOptionC} {cpuOptions.cpuOptionD} {cpuOptions.cpuOptionE}</p>
-            <p className="note">Note: Some Ryzen 5000 and older CPU's dont contain integrated Graphics. Please check the Manufactures Website.</p>
-            <p className="note">Note: The Ryzen 5 7500F does not contain integrated Graphics.</p>
-            <p className="note">Note: With the Expetion of Ryzen 7000 and Ryzen 5000 3D V-Cache CPU's,  all AMD Ryzen CPU's are overclockable in an X or B Series Motherboard.</p>
+            <p className={`note ${darkMode ? 'dark' : ''}`}>Note: Some Ryzen 5000 and older CPU's dont contain integrated Graphics. Please check the Manufactures Website.</p>
+            <p className={`note ${darkMode ? 'dark' : ''}`}>Note: The Ryzen 5 7500F does not contain integrated Graphics.</p>
+            <p className={`note ${darkMode ? 'dark' : ''}`}>Note: With the Expetion of Ryzen 7000 and Ryzen 5000 3D V-Cache CPU's,  all AMD Ryzen CPU's are overclockable in an X or B Series Motherboard.</p>
         </div>
     );
 }

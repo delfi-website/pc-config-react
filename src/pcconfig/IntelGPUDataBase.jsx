@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react";
 
-export default function IntelGPUDataBase({gpuGeneration, performanceBraket}) {
+export default function IntelGPUDataBase({gpuGeneration, performanceBraket, darkMode}) {
     const [gpuOptions, setGpuOptins] = useState({
         gpuOptionA: null,
         gpuOptionB: null,
@@ -64,7 +64,7 @@ export default function IntelGPUDataBase({gpuGeneration, performanceBraket}) {
         <div>
             <p>Fitting GPU's are:</p>
             <p>{gpuOptions.gpuOptionA} {gpuOptions.gpuOptionB} {gpuOptions.gpuOptionC}|</p>
-            <p className="note">Note: Intel currently only offers GPU's in the 60 and 30 Performance Class.</p>
+            <p className={`note ${darkMode ? 'dark' : ''}`}>Note: Intel currently only offers GPU's in the 60 and 30 Performance Class.</p>
         </div>
     )
 }
