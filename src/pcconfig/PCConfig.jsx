@@ -329,7 +329,7 @@ export default function PCConfig() {
             <p>
             </p>
             <p>Select your GPU Performance Tier</p>
-            <p>Note: This is going of NVIDIA's Numbering. An Arc B580 is in the same Class as the RTX 4060</p>
+            <p className="note">Note: This is going of NVIDIA's Numbering. An Arc B580 is in the same Class as the RTX 4060</p>
             <select
                 name="gpuPerformanceBraket"
                 value={gpuPerformanceBracket}

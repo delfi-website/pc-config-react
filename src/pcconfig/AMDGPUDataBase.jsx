@@ -296,7 +296,7 @@ export default function AMDGPUDataBase({gpuGeneration, performanceBraket}) {
         <div>
             <p>Fitting GPU's are:</p>
             <p>{gpuOptions.gpuOptionA} {gpuOptions.gpuOptionB} {gpuOptions.gpuOptionC} {gpuOptions.gpuOptionD}|</p>
-            <p>Note: As of April 11th, 2025, not all RX 9000 series GPU's have been released / announced.</p>
+            <p className="note">Note: As of April 11th, 2025, not all RX 9000 series GPU's have been released / announced.</p>
         </div>
     )
 }

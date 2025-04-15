@@ -364,9 +364,9 @@ export default function NvidiaGPUDataBase({gpuGeneration, performanceBraket}) {
         <div>
             <p>Fitting GPU's are:</p>
             <p>{gpuOptions.gpuOptionA} {gpuOptions.gpuOptionB} {gpuOptions.gpuOptionC} {gpuOptions.gpuOptionD}|</p>
-            <p>Note: As of April 11th, 2025, not all RTX 5000 series GPU's have been released yet.</p>
-            <p>Note: The RTX 5090 and 4090 have a slightly weaker "D" Variant</p>
-            <p>Note: The RTX 2000 and the GTX 1600 Series are based on the same architectue</p>
+            <p className="note">Note: As of April 11th, 2025, not all RTX 5000 series GPU's have been released yet.</p>
+            <p className="note">Note: The RTX 5090 and 4090 have a slightly weaker "D" Variant</p>
+            <p className="note">Note: The RTX 2000 and the GTX 1600 Series are based on the same architectue</p>
         </div>
     )
 }
