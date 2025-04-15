@@ -306,12 +306,12 @@ export default function PCConfig() {
         )}
             {gpuIsAmd && (
                 <select name="amdCpuGeneration" value={amdGpuGeneration} onChange={handleAmdGpuGenerationChange}>
-                    <option value="0">Radeon Rx 9000 Series</option>
-                    <option value="1">Radeon Rx 7000 Series</option>
-                    <option value="2">Radeon Rx 6000 Series</option>
-                    <option value="3">Radeon Rx 5000 Series</option>
-                    <option value="4">Radeon Rx Vega Series</option>
-                    <option value="5">Radeon Rx 500 Series</option>
+                    <option value="0">Radeon RX 9000 Series</option>
+                    <option value="1">Radeon RX 7000 Series</option>
+                    <option value="2">Radeon RX 6000 Series</option>
+                    <option value="3">Radeon RX 5000 Series</option>
+                    <option value="4">Radeon RX Vega Series</option>
+                    <option value="5">Radeon RX 500 Series</option>
                     <option value="6">Older Radeon Series</option>
                 </select>
             )}
