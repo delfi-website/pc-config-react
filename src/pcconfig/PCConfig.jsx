@@ -134,7 +134,7 @@ export default function PCConfig() {
     };
 
 
-    const handleSubmit = (event) => {
+    /* const handleSubmit = (event) => {
         event.preventDefault();
         console.log({
             cpuVendor,
@@ -144,7 +144,7 @@ export default function PCConfig() {
             iGpu,
             overclockable,
         });
-    };
+    }; */
 
     return (
 
@@ -158,7 +158,6 @@ export default function PCConfig() {
                 />
                 <span className="slider round"></span>
             </label>
-            <form onSubmit={handleSubmit}>
                 <h1>PC Configurator</h1>
                 <h2>CPU Selection</h2>
                 <p>Select your Processor Brand</p>
@@ -286,7 +285,6 @@ export default function PCConfig() {
 
 
                 <p></p>
-            </form>
             {cpuIsIntel && (
                 <IntelCPUDataBase generation={intelCpuGeneration} performance={cpuPerformanceBracket} iGpu={iGpu}
                                   unlocked={overclockable} darkMode={darkMode}/>
