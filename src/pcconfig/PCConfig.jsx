@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import IntelCPUDataBase from "./IntelCPUDataBase.jsx";
 import AMDCPUDataBase from "./AMDCPUDataBase.jsx";
 import NvidiaGPUDataBase from "./NvidiaGPUDataBase.jsx";
@@ -6,6 +6,24 @@ import AMDGPUDataBase from "./AMDGPUDataBase.jsx";
 import IntelGPUDataBase from "./IntelGPUDataBase.jsx";
 
 export default function PCConfig() {
+
+    const [darkMode, setDarkMode] = useState(() => {
+        // Check if there's a saved preference in localStorage
+        const savedMode = localStorage.getItem('darkMode');
+        return savedMode ? JSON.parse(savedMode) : false;
+    });
+
+    useEffect(() => {
+        // Apply the dark mode class to the body element
+        if (darkMode) {
+            document.body.classList.add('dark');
+            localStorage.setItem('darkMode', JSON.stringify(true));
+        } else {
+            document.body.classList.remove('dark');
+            localStorage.setItem('darkMode', JSON.stringify(false));
+        }
+    }, [darkMode]);
+
     // CPU Vendor and Generation
     const [cpuVendor, setCpuVendor] = useState(0);  // 0 = Intel, 1 = AMD
     const [intelCpuGeneration, setIntelCpuGeneration] = useState(0); // 0 = Core Ultra 200 / Arrow Lake, 1 = Core i 14th Gen. / Raptor Lake Refresh, 2 = Core i 13th Gen / Raptor Lake, 3 = Core i 12th Gen / Alder Lake, 4 = older
@@ -129,7 +147,17 @@ export default function PCConfig() {
     };
 
     return (
+
         <div>
+            <p>Toggle Dark Mode</p>
+            <label className="switch">
+                <input
+                    type="checkbox"
+                    checked={darkMode}
+                    onChange={() => setDarkMode(prev => !prev)}
+                />
+                <span className="slider round"></span>
+            </label>
             <form onSubmit={handleSubmit}>
                 <h1>PC Configurator</h1>
                 <h2>CPU Selection</h2>
@@ -188,7 +216,6 @@ export default function PCConfig() {
                     </option>
 
                 </select>
-
 
 
                 <p></p>
@@ -260,11 +287,13 @@ export default function PCConfig() {
 
                 <p></p>
             </form>
-            {cpuIsIntel &&(
-                <IntelCPUDataBase generation={intelCpuGeneration} performance={cpuPerformanceBracket} iGpu={iGpu} unlocked={overclockable}/>
+            {cpuIsIntel && (
+                <IntelCPUDataBase generation={intelCpuGeneration} performance={cpuPerformanceBracket} iGpu={iGpu}
+                                  unlocked={overclockable} darkMode={darkMode}/>
             )}
             {cpuIsAmd && (
-                <AMDCPUDataBase generation={amdCpuGeneration} performance={cpuPerformanceBracket} threeDVCache={threeDVCache}/>
+                <AMDCPUDataBase generation={amdCpuGeneration} performance={cpuPerformanceBracket}
+                                threeDVCache={threeDVCache} darkMode={darkMode}/>
             )}
             <p></p>
             <h2>GPU Selection</h2>
@@ -298,38 +327,39 @@ export default function PCConfig() {
             </label>
             <p>Select your GPU Generation</p>
             {gpuIsIntel && (
-            <select name="intelCpuGeneration" value={intelGpuGeneration}
-                    onChange={handleIntelGpuGenerationChange}>
-                <option value="0">ARC Battlemage</option>
-                <option value="1">ARC Alchemist</option>
-            </select>
-        )}
+                <select name="intelCpuGeneration" value={intelGpuGeneration}
+                        onChange={handleIntelGpuGenerationChange}>
+                    <option value="0">ARC Battlemage</option>
+                    <option value="1">ARC Alchemist</option>
+                </select>
+            )}
             {gpuIsAmd && (
                 <select name="amdCpuGeneration" value={amdGpuGeneration} onChange={handleAmdGpuGenerationChange}>
-                    <option value="0">Radeon Rx 9000 Series</option>
-                    <option value="1">Radeon Rx 7000 Series</option>
-                    <option value="2">Radeon Rx 6000 Series</option>
-                    <option value="3">Radeon Rx 5000 Series</option>
-                    <option value="4">Radeon Rx Vega Series</option>
-                    <option value="5">Radeon Rx 500 Series</option>
+                    <option value="0">Radeon RX 9000 Series</option>
+                    <option value="1">Radeon RX 7000 Series</option>
+                    <option value="2">Radeon RX 6000 Series</option>
+                    <option value="3">Radeon RX 5000 Series</option>
+                    <option value="4">Radeon RX Vega Series</option>
+                    <option value="5">Radeon RX 500 Series</option>
                     <option value="6">Older Radeon Series</option>
                 </select>
             )}
             {gpuIsNvidia && (
                 <select name="amdCpuGeneration" value={nvidiaGpuGeneration} onChange={handleNvidiaGpuGenerationChange}>
-                <option value="0">RTX 5000 Series</option>
-                <option value="1">RTX 4000 Series</option>
-                <option value="2">RTX 3000 Series</option>
-                <option value="3">RTX 2000 Series</option>
-                <option value="4">GTX 1600 Series</option>
-                <option value="5">GTX 1000 Series</option>
-                <option value="6">Older GeForce Series</option>
+                    <option value="0">RTX 5000 Series</option>
+                    <option value="1">RTX 4000 Series</option>
+                    <option value="2">RTX 3000 Series</option>
+                    <option value="3">RTX 2000 Series</option>
+                    <option value="4">GTX 1600 Series</option>
+                    <option value="5">GTX 1000 Series</option>
+                    <option value="6">Older GeForce Series</option>
                 </select>
             )}
             <p>
             </p>
             <p>Select your GPU Performance Tier</p>
-            <p>Note: This is going of NVIDIA's Numbering. An Arc B580 is in the same Class as the RTX 4060</p>
+            <p className={`note ${darkMode ? 'dark' : ''}`}>Note: This is going of NVIDIA's Numbering. An Arc B580 is in the same Class as the RTX
+                4060</p>
             <select
                 name="gpuPerformanceBraket"
                 value={gpuPerformanceBracket}
@@ -344,13 +374,13 @@ export default function PCConfig() {
             </select>
             <p></p>
             {gpuIsNvidia && (
-                <NvidiaGPUDataBase gpuGeneration={nvidiaGpuGeneration} performanceBraket={gpuPerformanceBracket}/>
-                )}
+                <NvidiaGPUDataBase gpuGeneration={nvidiaGpuGeneration} performanceBraket={gpuPerformanceBracket} darkMode={darkMode}/>
+            )}
             {gpuIsIntel && (
-                <IntelGPUDataBase gpuGeneration={intelGpuGeneration} performanceBraket={gpuPerformanceBracket}/>
+                <IntelGPUDataBase gpuGeneration={intelGpuGeneration} performanceBraket={gpuPerformanceBracket} darkMode={darkMode}/>
             )}
             {gpuIsAmd && (
-                <AMDGPUDataBase gpuGeneration={amdGpuGeneration} performanceBraket={gpuPerformanceBracket}/>
+                <AMDGPUDataBase gpuGeneration={amdGpuGeneration} performanceBraket={gpuPerformanceBracket} darkMode={darkMode}/>
             )}
         </div>
     );

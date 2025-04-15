@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react";
 
-export default function AMDGPUDataBase({gpuGeneration, performanceBraket}) {
+export default function AMDGPUDataBase({gpuGeneration, performanceBraket, darkMode}) {
     const [gpuOptions, setGpuOptins] = useState({
         gpuOptionA: null,
         gpuOptionB: null,
@@ -296,7 +296,7 @@ export default function AMDGPUDataBase({gpuGeneration, performanceBraket}) {
         <div>
             <p>Fitting GPU's are:</p>
             <p>{gpuOptions.gpuOptionA} {gpuOptions.gpuOptionB} {gpuOptions.gpuOptionC} {gpuOptions.gpuOptionD}|</p>
-            <p>Note: As of April 11th, 2025, not all RX 9000 series GPU's have been released / announced.</p>
+            <p className={`note ${darkMode ? 'dark' : ''}`}>Note: As of April 11th, 2025, not all RX 9000 series GPU's have been released / announced.</p>
         </div>
     )
 }

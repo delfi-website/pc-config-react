@@ -1,6 +1,7 @@
 import {useEffect, useState} from "react";
+import "../App.css"
 
-export default function IntelCPUDataBase({generation, performance, iGpu, unlocked}) {
+export default function IntelCPUDataBase({generation, performance, iGpu, unlocked, darkMode}) {
     const [cpuOptions, setCpuOptions] = useState({
         cpuOptionA: null,
         cpuOptionB: null,
@@ -562,7 +563,8 @@ export default function IntelCPUDataBase({generation, performance, iGpu, unlocke
         <div>
             <p>Fitting CPU's are:</p>
             <p>{cpuOptions.cpuOptionA} {cpuOptions.cpuOptionB} {cpuOptions.cpuOptionC} {cpuOptions.cpuOptionD} {cpuOptions.cpuOptionE}</p>
-            <p>Note: Some CPU's have an "S" variant with higher Base Clocks and some have a "T" Variant with lower Base Clocks.</p>
+            <p className={`note ${darkMode ? 'dark' : ''}`}>Note: Some CPU's have an "S" variant with higher Base Clocks and some have a "T" Variant with lower Base Clocks.</p>
+            <p className={`note ${darkMode ? 'dark' : ''}`}>Note: Early Production Units of 13th and 14th Generation Intel Core i Series CPU's had Issues with bad CPU Microcode and Oxidation.</p>
         </div>
     )
 }
